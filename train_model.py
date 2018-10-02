@@ -6,8 +6,8 @@ import pickle
 import h5py
 
 ap = argparse.ArgumentParser();
-db = "";
-model = "";
+db = "/storage/features.hdf5";
+model = "imagenet.h5";
 jobs = -1;
 
 db = h5py.File(db, "r");
