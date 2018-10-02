@@ -5,7 +5,6 @@ import argparse
 import pickle
 import h5py
 
-ap = argparse.ArgumentParser();
 db = "/storage/features.hdf5";
 model = "imagenet.h5";
 jobs = -1;
