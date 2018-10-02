@@ -13,6 +13,7 @@ dataset_folder = "animals/images/";
 final_output_size = 512 * 7 * 7;
 output = "/artifacts/features.hdf5";
 bufferSize = 1000;
+weights = "imagenet.h5"
 
 print("[INFO] loading images ...")
 
@@ -25,16 +26,16 @@ for _class in classNames:
 random.shuffle(imagePaths);
 
 le = LabelEncoder();
-labels = le.fit_transform(classNames);
+labels = [p.split(os.path.sep)[-2] for p in imagePaths];
 
-model = VGG16(weights = "imagenet", include_top = False);
+model = VGG16(weights = weights, include_top = False);
 dataset = HDF5DatasetWriter((len(imagePaths), final_output_size), output, dataKey = "features", bufSize = bufferSize)
 dataset.storeClassLabels(le.classes_);
 
 
 for i in np.arange(0, len(imagePaths), bs):
     batchPaths = imagePaths[i: i + bs];
-    batchLabels = labels[i: i + bs]
+    batchLabels = labels[i: i + bs];
     batchImages = [];
 
     for (j, imagePath) in enumerate(batchPaths):
