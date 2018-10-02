@@ -27,6 +27,7 @@ random.shuffle(imagePaths);
 
 le = LabelEncoder();
 labels = [p.split(os.path.sep)[-2] for p in imagePaths];
+labels = le.fit_transform(labels);
 
 model = VGG16(weights = weights, include_top = False);
 dataset = HDF5DatasetWriter((len(imagePaths), final_output_size), output, dataKey = "features", bufSize = bufferSize)
