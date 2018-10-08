@@ -25,7 +25,7 @@ print(classification_report(db["labels"][i:], preds, target_names=db["label_name
 print("[INFO] saving model ...");
 
 f = open(model, "wb");
-f.write(pickle.dumps(model.best_estimator_));
+f.write("/artifacts/" + pickle.dumps(model.best_estimator_));
 f.close();
 db.close();
 
