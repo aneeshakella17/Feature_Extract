@@ -6,7 +6,6 @@ import pickle
 import h5py
 
 db = "/storage/features.hdf5";
-model = "imagenet.h5";
 jobs = -1;
 
 db = h5py.File(db, "r");
@@ -24,7 +23,8 @@ print(classification_report(db["labels"][i:], preds, target_names=db["label_name
 
 print("[INFO] saving model ...");
 
-f = open(model, "wb");
+model_file = "/artifacts/imagenet.h5";
+f = open(model_file, "wb");
 f.write("/artifacts/" + pickle.dumps(model.best_estimator_));
 f.close();
 db.close();
