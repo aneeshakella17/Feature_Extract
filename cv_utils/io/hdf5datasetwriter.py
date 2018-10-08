@@ -32,7 +32,7 @@ class HDF5DatasetWriter:
 
     def storeClassLabels(self, classLabels):
         dt = h5py.special_dtype(vlen = unicode);
-        labelSet = self.db.create_dataset("labels_names",
+        labelSet = self.db.create_dataset("label_names",
                                           (len(classLabels),), dtype = dt);
         labelSet[:] = classLabels;
 
