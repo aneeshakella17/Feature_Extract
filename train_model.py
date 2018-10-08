@@ -10,7 +10,7 @@ model = "imagenet.h5";
 jobs = -1;
 
 db = h5py.File(db, "r");
-i = int(db["labels"].shape[0] * 75);
+i = int(db["labels"].shape[0] * 0.75);
 
 print("[INFO] tuning hyperparameters")
 params = {"C": [0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0]}
